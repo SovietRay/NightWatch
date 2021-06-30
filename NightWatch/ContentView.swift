@@ -27,41 +27,51 @@ let monthlyTasks = [
 
 struct ContentView: View {
     var body: some View {
-        List {
-            //MARK: Nightly Tasks
-            Section(header: HStack {
-                Image(systemName: "moon.stars")
-                Text("Nightly Tasks")
+        NavigationView {
+            List {
+                //MARK: Nightly Tasks
+                Section(header: TaskSectionHeader()) {
+                    ForEach(nightlyTasks, id: \.self, content: {
+                        taskName in
+                        NavigationLink(taskName, destination: Text(taskName))
+                    })
+                }
+                //MARK: Weekly Tasks
+                Section(header: HStack {
+                    Image(systemName: "sunset")
+                    Text("Weekly Tasks")
+                }
+                .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)) {
+                    ForEach(weeklyTasks, id: \.self, content: {
+                        taskName in
+                        NavigationLink(taskName, destination: Text(taskName))
+                    })
+                }
+                //MARK: Monthly Tasks
+                Section(header: HStack {
+                    Image(systemName: "calendar")
+                    Text("Monthly Tasks")
+                }
+                .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)) {
+                    ForEach(monthlyTasks, id: \.self, content: {
+                        taskName in
+                        NavigationLink(taskName, destination: Text(taskName))
+                    })
+                }
             }
-            .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)) {
-                ForEach(nightlyTasks, id: \.self, content: {
-                    taskName in
-                    Text(taskName)
-                })
-            }
-            //MARK: Weekly Tasks
-            Section(header: HStack {
-                Image(systemName: "sunset")
-                Text("Weekly Tasks")
-            }
-            .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)) {
-                ForEach(weeklyTasks, id: \.self, content: {
-                    taskName in
-                    Text(taskName)
-                })
-            }
-            //MARK: Monthly Tasks
-            Section(header: HStack {
-                Image(systemName: "calendar")
-                Text("Monthly Tasks")
-            }
-            .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)) {
-                ForEach(monthlyTasks, id: \.self, content: {
-                    taskName in
-                    Text(taskName)
-                })
-            }.listStyle(GroupedListStyle()) // Этот стиль был изначально для List?
+            .listStyle(GroupedListStyle())
+            .navigationTitle("Home")
         }
+    }
+}
+
+struct TaskSectionHeader: View {
+    var body: some View {
+        HStack {
+            Image(systemName: "moon.stars")
+            Text("Nightly Tasks")
+        }
+        .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
     }
 }
 
@@ -70,3 +80,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
