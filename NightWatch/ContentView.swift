@@ -30,32 +30,27 @@ struct ContentView: View {
         NavigationView {
             List {
                 //MARK: Nightly Tasks
-                Section(header: TaskSectionHeader()) {
+                Section(header: TaskSectionHeader(symbolSysteName: "moon.stars", HeaderText: "Nightly Tasks")) {
                     ForEach(nightlyTasks, id: \.self, content: {
                         taskName in
-                        NavigationLink(taskName, destination: Text(taskName))
+                        NavigationLink(taskName,
+                                       destination: DetailsView(taskName: taskName))
                     })
                 }
                 //MARK: Weekly Tasks
-                Section(header: HStack {
-                    Image(systemName: "sunset")
-                    Text("Weekly Tasks")
-                }
-                .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)) {
+                Section(header: TaskSectionHeader(symbolSysteName: "sunset", HeaderText: "Weekly Tasks")) {
                     ForEach(weeklyTasks, id: \.self, content: {
                         taskName in
-                        NavigationLink(taskName, destination: Text(taskName))
+                        NavigationLink(taskName,
+                                       destination: DetailsView(taskName: taskName))
                     })
                 }
                 //MARK: Monthly Tasks
-                Section(header: HStack {
-                    Image(systemName: "calendar")
-                    Text("Monthly Tasks")
-                }
-                .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)) {
+                Section(header: TaskSectionHeader(symbolSysteName: "calendar", HeaderText: "Monthly Tasks")) {
                     ForEach(monthlyTasks, id: \.self, content: {
                         taskName in
-                        NavigationLink(taskName, destination: Text(taskName))
+                        NavigationLink(taskName,
+                                       destination: DetailsView(taskName: taskName))
                     })
                 }
             }
@@ -66,18 +61,24 @@ struct ContentView: View {
 }
 
 struct TaskSectionHeader: View {
+    let symbolSysteName: String
+    let HeaderText: String
     var body: some View {
         HStack {
-            Image(systemName: "moon.stars")
-            Text("Nightly Tasks")
+            Image(systemName: symbolSysteName)
+            Text(HeaderText)
         }
         .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
     }
 }
+
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
 
