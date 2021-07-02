@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B94CC8D5268E456A008E50C6 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94CC8D4268E456A008E50C6 /* DetailsView.swift */; };
+		B98C5760268FC04A00042B04 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98C575F268FC04A00042B04 /* Task.swift */; };
 		B9C4F10726874B3F00882A9F /* NightWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4F10626874B3F00882A9F /* NightWatchApp.swift */; };
 		B9C4F10926874B3F00882A9F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4F10826874B3F00882A9F /* ContentView.swift */; };
 		B9C4F10B26874B4100882A9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9C4F10A26874B4100882A9F /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		B94CC8D4268E456A008E50C6 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		B98C575F268FC04A00042B04 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		B9C4F10326874B3F00882A9F /* NightWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NightWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C4F10626874B3F00882A9F /* NightWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightWatchApp.swift; sourceTree = "<group>"; };
 		B9C4F10826874B3F00882A9F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,12 +56,13 @@
 		B9C4F10526874B3F00882A9F /* NightWatch */ = {
 			isa = PBXGroup;
 			children = (
+				B98C575F268FC04A00042B04 /* Task.swift */,
 				B9C4F10626874B3F00882A9F /* NightWatchApp.swift */,
 				B9C4F10826874B3F00882A9F /* ContentView.swift */,
+				B94CC8D4268E456A008E50C6 /* DetailsView.swift */,
 				B9C4F10A26874B4100882A9F /* Assets.xcassets */,
 				B9C4F10F26874B4100882A9F /* Info.plist */,
 				B9C4F10C26874B4100882A9F /* Preview Content */,
-				B94CC8D4268E456A008E50C6 /* DetailsView.swift */,
 			);
 			path = NightWatch;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B98C5760268FC04A00042B04 /* Task.swift in Sources */,
 				B9C4F10926874B3F00882A9F /* ContentView.swift in Sources */,
 				B9C4F10726874B3F00882A9F /* NightWatchApp.swift in Sources */,
 				B94CC8D5268E456A008E50C6 /* DetailsView.swift in Sources */,

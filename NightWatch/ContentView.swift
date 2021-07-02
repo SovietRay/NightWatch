@@ -27,6 +27,32 @@ let monthlyTasks = [
 
 struct ContentView: View {
     var body: some View {
+        TabView {
+            TasksView().tabItem {
+                Image(systemName: "house.fill")
+                Text("Main")}
+            Text("Options").tabItem {
+                Image(systemName: "gear")
+                Text("Options")
+            }
+        }
+    }
+}
+
+struct TaskSectionHeader: View {
+    let symbolSysteName: String
+    let HeaderText: String
+    var body: some View {
+        HStack {
+            Image(systemName: symbolSysteName)
+            Text(HeaderText)
+        }
+        .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
+    }
+}
+
+struct TasksView: View {
+    var body: some View {
         NavigationView {
             List {
                 //MARK: Nightly Tasks
@@ -60,25 +86,8 @@ struct ContentView: View {
     }
 }
 
-struct TaskSectionHeader: View {
-    let symbolSysteName: String
-    let HeaderText: String
-    var body: some View {
-        HStack {
-            Image(systemName: symbolSysteName)
-            Text(HeaderText)
-        }
-        .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
-    }
-}
-
-
-
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
-
-
