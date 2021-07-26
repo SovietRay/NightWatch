@@ -10,10 +10,11 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var nightWatchTasks: NightWatchTasks
     @State private var focusModeOn = false
+    @State private var resetAlertShowing = false
     
     var body: some View {
         TabView {
-            TasksView(nightWatchTasks: nightWatchTasks, focusModeOn: self.$focusModeOn)
+            TasksView(nightWatchTasks: nightWatchTasks, focusModeOn: self.$focusModeOn, resetAlertShowing: self.$resetAlertShowing)
                 .tabItem {
                 Image(systemName: "house.fill")
                 Text("Main")}
@@ -40,6 +41,7 @@ struct TaskSectionHeader: View {
 struct TasksView: View {
     @ObservedObject var nightWatchTasks: NightWatchTasks
     @Binding var focusModeOn : Bool
+    @Binding  var resetAlertShowing : Bool
     
     var body: some View {
         NavigationView {
@@ -96,8 +98,13 @@ struct TasksView: View {
             .listStyle(GroupedListStyle())
             .navigationTitle("Home")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing){
+                ToolbarItem(placement: .navigationBarLeading){
                     EditButton()
+                }
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button("Reset") {
+                        resetAlertShowing = true
+                    }
                 }
                 ToolbarItem(placement: .bottomBar) {
                     Toggle(isOn: $focusModeOn, label: {
@@ -105,7 +112,13 @@ struct TasksView: View {
                     })
                 }
             }
-        }
+        }.alert(isPresented: $resetAlertShowing, content: {
+            Alert(title: Text("Are you sure?"),
+                  primaryButton: .cancel(),
+                  secondaryButton: .destructive(Text("Yes, reset it!"), action: {
+                        let refreshedNightWatchTasks = NightWatchTasks()
+                        self.nightWatchTasks.nightlyTasks = refreshedNightWatchTasks.nightlyTasks}))
+        })
     }
 }
 
